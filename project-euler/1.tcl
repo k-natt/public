@@ -2,7 +2,7 @@
 
 # PE#1 - sum of natural numbers < 1000 and divisible by 3 or 5.
 
-puts [time {
+set t [time {
 	set sum 0
 
 	for {set i 1} {$i < 1000} {incr i} {
@@ -10,18 +10,22 @@ puts [time {
 			incr sum $i
 		}
 	}
-} 1000]
+} 1300]
+
 puts $sum
+puts $t
 # 233168
+# 773μs
 
 # With fxns:
 
-source fxns.tcl
+set t [time {
+	source fxns.tcl
 
-puts [time {
-set sum [sum [filter i {$i % 3 == 0 || $i % 5 == 0} [mkrange 999]]]
-} 1000]
+	set sum [sum [filter i {$i % 3 == 0 || $i % 5 == 0} [mkrange 999]]]
+} 450]
 
 puts $sum
+puts $t
 # 233168
-
+# 1935μs

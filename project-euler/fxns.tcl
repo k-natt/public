@@ -1,4 +1,11 @@
 
+proc pval args {
+	foreach var $args {
+		upvar $var val
+		puts "$var: $val"
+	}
+}
+
 # Returns a list of numbers between start and end, inclusive, by increment.
 proc mkrange {end {start 0} {increment 1}} {
 	set lst [list]
@@ -27,15 +34,17 @@ proc filter {var fxn lst} {
 }
 
 proc fold {vel vacc fxn lst {acc0 0}} {
-	set $vacc $acc0
-	foreach $vel $lst {
-		set $vacc [eval $fxn]
+	set accum $acc0
+	foreach x $lst {
+		set $vel $x
+		set $vacc $accum
+		set accum [expr $fxn]
 	}
-	return [expr $$vacc]
+	return $accum
 }
 
-proc sum  lst { fold i all {expr $i + $all} $lst }
-proc prod lst { fold i all {expr $i * $all} $lst 1 }
+proc sum  lst { fold i all {$i + $all} $lst }
+proc prod lst { fold i all {$i * $all} $lst 1 }
 
 proc isPrime n {
 	if {$n%2 == 0} {return [expr $n == 2]}
@@ -54,4 +63,22 @@ proc ndiv n {
 	while "\$f <= $lim" {if {$n%$f == 0} {incr count}; incr f}
 	return $count
 }
+
+proc max args {
+	return [fold n max {$n > $max ? $n : $max} $args]
+}
+
+proc factorial n {
+	return [prod [mkrange $n 1]]
+}
+
+proc flatten args {
+	for {set i 0} {$i < [llength args]} {incr i} {
+		set j [lindex $args $i]
+		if {[llength $j] > 1} {lreplace $args $i $i {*}$j}
+	}
+	return $args
+}
+
+
 
