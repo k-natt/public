@@ -18,5 +18,5 @@ set t [time {
 puts $sum
 puts $t
 # 4613732
-# 118μs/iter
+# 118μs
 
