@@ -4,6 +4,12 @@
 
 source fxns.tcl
 
-puts [sum [split [expr 2**1000] ""]]
+set t [time {
+	set answer [sum [split [expr 2**1000] ""]]
+} 1800]
+
+puts $answer
+puts $t
 # 1366
+# 252μs
 

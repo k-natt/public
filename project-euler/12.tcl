@@ -10,10 +10,12 @@ proc ndiv n {
 	for {set i 2} {$i*$i < $n} {incr i} {
 		if {$n % $i == 0} {incr c}
 	}
-	return [expr 2*$c]
+	incr c $c
+	if {$n % $i == 0} {incr c}
+	return $c
 }
 
-puts [time {
+set t [time {
 	set n 1
 	set sum 1
 
@@ -23,7 +25,8 @@ puts [time {
 	}
 }]
 
-# 13,625,753 microseconds
 puts "$n: $sum ([ndiv $sum])"
+puts $t
 # 12375: 76576500 (576)
+# 13.4s
 

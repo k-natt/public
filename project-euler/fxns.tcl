@@ -80,5 +80,5 @@ proc flatten args {
 	return $args
 }
 
-
+proc tracer args { puts [info level 0] }
 
