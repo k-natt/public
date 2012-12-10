@@ -17,6 +17,7 @@ set t [time {
 puts $sum
 puts $t
 # 142913828922
+# 108s
 
 #set n 2
 #set sum 0

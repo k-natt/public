@@ -1,0 +1,98 @@
+
+# enable
+setopt alwaystoend
+setopt autocontinue
+setopt autopushd 
+setopt autoresume
+setopt autocd 
+setopt autolist
+setopt braceccl
+setopt bsdecho
+setopt completeinword
+setopt correct
+setopt correctall
+setopt equals
+setopt extendedglob 
+setopt extendedhistory
+setopt globcomplete
+setopt histfindnodups
+setopt histignoredups
+setopt histignorespace
+setopt histnofunctions
+setopt histreduceblanks
+setopt histverify
+setopt incappendhistory 
+setopt listpacked
+#setopt ksharrays #? sets zero-indexed but disallows $arr[i].
+setopt numericglobsort
+setopt promptsubst
+setopt rcexpandparam
+setopt rcquotes
+#setopt hisingorealldups
+#setopt bashautolist
+#setopt magicequalsubst
+#setopt rematchpcre
+
+# disable
+setopt nobeep 
+setopt noclobber
+setopt nocompletealiases
+setopt nohistbeep
+setopt nohup
+setopt nolistbeep
+setopt nomatch
+setopt nonotify
+
+# defaults
+#setopt noglobsubst
+#setopt shortloops
+#setopt zle
+
+# try out
+setopt cdablevars
+setopt chasedots
+setopt automenu
+setopt pushdminus
+setopt pushdsilent
+
+# default
+setopt autoparamslash
+setopt autoremoveslash
+
+
+# From M.M. & Gilles
+#setopt alwaystoend
+#setopt braceccl
+#setopt bsdecho
+#setopt globdots
+#setopt histexpiredupsfirst
+#setopt histignorealldups
+#setopt histsavenodups
+#setopt interactive
+#setopt interactivecomments
+#setopt listpacked
+#setopt longlistjobs
+#setopt magicequalsubst
+#setopt monitor
+#setopt noautoremoveslash
+#setopt nobgnice
+#setopt nocheckjobs 
+#setopt noclobber
+#setopt noflowcontrol
+#setopt nofunctionargzero
+#setopt noglobalexport
+#setopt nohashdirs
+#setopt nohup 
+#setopt nopromptcr
+#setopt numericglobsort
+#setopt pathdirs
+#setopt posixbuiltins
+#setopt printexitvalue
+#setopt pushdignoredups 
+#setopt pushdminus 
+#setopt pushdsilent 
+#setopt pushdtohome 
+#setopt rcquotes
+#setopt shinstdin
+#setopt shoptionletters
+#setopt zle

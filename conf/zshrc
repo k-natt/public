@@ -1,0 +1,47 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' original true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/Users/kevin/.zshrc'
+
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+# MM
+zmodload zsh/pcre
+# already had:
+# [setopt] extendedglob appendhistory nobeep notify 
+#autoload -U compinit
+#compinit
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Mine
+
+PS1='%* %n@%m:%! %.%# '
+#RPS1='%T'
+#RPS1="%{%0(?,$fg_bold[green],$fg_bold[red])%}%?%{$reset_color%}"
+RPS1='%(?,%F{green},%F{black}%K{red})%?%f%k'
+setopt transient_rprompt
+
+if [ -d ~/.zsh.d ]; then
+for file in ~/.zsh.d/*; do
+	[ -f "$file" ] && . "$file"
+done
+fi
+
+export REPORTTIME=1
+
+export EDITOR=vim
+export VISUAL=$EDITOR
+export SVN_EDITOR=$EDITOR
+
+PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'$PATH
+

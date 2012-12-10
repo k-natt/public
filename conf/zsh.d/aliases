@@ -1,0 +1,8 @@
+
+alias virc='vim ~/.vimrc'
+alias viba='vim ~/.bashrc'
+alias viz='vim ~/.zshrc'
+
+alias rmd.='cd .. && rmdir ~-'
+alias ls='ls -G'
+

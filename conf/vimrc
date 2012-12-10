@@ -1,0 +1,152 @@
+
+syntax on
+
+"au BufWinEnter *.[ch] call Foldall()
+au BufWinEnter * call Foldall()
+au BufWinEnter *.vala setf cs
+
+""au BufRead, BufNewFile *.zsh* set filetype=zsh
+au BufRead,BufNewFile * if expand("%:p") =~ "\.zsh" | set ft=zsh | endif
+
+"Automatically save scripts with shebang as executable.
+"function CheckExe ()
+"	if getline(1) =~ "^#!.*/bin/" 
+"		silent !chmod a+x <afile> 
+"	endif 
+"endfunction
+"
+"au BufWritePost * call CheckExe()
+"au BufNewFile * set autoread
+
+au FileType c,cpp,java set mps+==:;
+"set mps+=<:>
+set matchpairs-=<:>
+ "Can't get this working.
+"set mps+=\":"
+set mps+=':'
+ " Make it so when I open a brace, it adds the closing brace  on the next line, creates a new line between them, and puts the cursor there.
+"au FileType c,cpp,java imap {<cr> {<cr>}<c-o>O
+imap {<cr> {<cr>}<c-o>O
+"awk doesn't indent {\n} correctly, work around that.
+au FileType awk inoremap {<cr> {<cr>}<esc><<O
+
+if has("autocmd")
+	filetype plugin indent on
+endif
+
+function! Foldall()
+	let origpos = getpos(".")
+	call setpos(".",[0,0,0,0])
+	while search("^\\(\\/\\/\\)\\?}", "W") > 0
+		if foldlevel(".") == 0
+			normal zfa{%
+		endif
+	endwhile
+	call setpos(".",origpos)
+endfunction
+command! Foldall :call Foldall()
+
+function! Toggle()
+	s!^\(\s*\)\(/\?[^/[:space:]]/\?\)!\1xxx//\2!e
+	s!^\(\s*\)//!\1!e
+	s!^\(\s*\)xxx//!\1//!e
+endfunc
+command! Toggle :call Toggle()
+"nnoremap <C-/> :call Toggle()<CR>
+"vnoremap <C-/> :call Toggle()<CR>
+"inoremap <C-/> <Esc>:call Toggle()<CR>i
+
+" Options 
+ "Show cursor location
+set ruler
+ "Show keystrokes in normal mode
+set showcmd
+ "Find as you type
+set incsearch
+ "Creates backups of the entire file set backup
+ "Backup files stored here
+set backupdir=~/.vim/backup
+ "Temp (.swp) files here
+set directory=~/.vim/tmp
+ "Interactive shell, in case I need aliases/functions from there
+set shell=/bin/bash\ -i
+ "Make it so we can open more tabs at startup
+set tabpagemax=100
+
+" Insert mode remaps
+ "Moving when I forget to escape
+inoremap jj <Esc>j
+inoremap kk <Esc>k
+inoremap hh <Esc>h
+ " `l` is common enough that I need more reps.
+inoremap llll <Esc>l 
+ "For when I forget to escape before saving
+inoremap :w <esc>:w
+inoremap :q <esc>:q
+inoremap :t <esc>:t
+ "For the toggle function in insert mode
+inoremap <C-/> <Esc>:call Toggle()<CR>i
+ "For when I want to insert and move to a line above/below.
+inoremap <a-k> <Esc>O
+inoremap <a-O> <Esc>O
+inoremap <a-j> <Esc>o
+inoremap <a-o> <Esc>o
+
+ "Skip to the end of the line
+inoremap <a-l> <c-o>A
+inoremap <c-l> <c-o>A
+inoremap <a-h> <c-o>I
+inoremap <c-h> <c-o>I
+
+" Normal mode remaps 
+ " Create Blank Newlines and stay in Normal mode
+nnoremap <silent> zj o<Esc>k
+nnoremap <silent> zk O<Esc>j
+ " For when I accidentally have caps on 
+nnoremap JJJJ <Nop>
+ " Space will toggle folds!
+nnoremap <space> za
+ " Next Tab
+nnoremap <silent> <C-Right> :tabnext<CR>
+ " Previous Tab
+nnoremap <silent> <C-Left> :tabprevious<CR>
+ " New Tab
+ " Can't do this one, it interferes with ctags tag-popping.
+"nnoremap <silent> <C-t> :tabnew<CR>
+ " For toggling in normal mode
+ " For some reason, we need to map to <c-_> to get ctrl-/ to work...
+"nnoremap <C-/> :call Toggle()<CR>
+nnoremap <C-_> :call Toggle()<CR>
+ " For going to insert mode and adding a blank line above and below.
+ " Note that <c-i> is also <tab>.
+""nnoremap <C-i> O<cr>
+"Changing so <tab> on a full line goes below.
+nnoremap <C-i> o<c-o>O
+ " For moving slightly faster through the file, but slower than just c-u/d
+nnoremap <c-j> jjjj 
+nnoremap <c-k> kkkk
+ " Change j and k to go over screen lines, not file lines.
+nnoremap j gj
+nnoremap k gk
+ " Repeat ex command
+nnoremap , @:
+
+
+"Visual mode remaps
+ "For toggling in visual
+vnoremap <C-_> :call Toggle()<CR>
+ " Align on equals.
+vnoremap + :Align =<CR>
+ " Repeat ex command
+vnoremap , @:
+
+command! Reload :source $MYVIMRC
+
+if filereadable("Makefile") == 0 && filereadable("../Makefile")
+	set makeprg=make\ -C..
+endif
+
+nnoremap make :make
+
+command! S :source $MYVIMRC
+

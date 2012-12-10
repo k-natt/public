@@ -1,0 +1,94 @@
+
+# Hook just before line is executed.
+# Replaced manual timing with REPORTTIME.
+preexec () {
+	_private_cmd=$1
+}
+#preexec () {
+#	_private_cmd=$2 # short form
+#	_private_stt=$EPOCHREALTIME
+#}
+
+# Hook just before prompt is printed
+precmd () {
+        [ "${_private_cmd%% *}" = "cd" ] || return 0
+        _private_cmd=
+        local threshold=1000
+        [ $(ls | wc -c | xargs echo) -lt $threshold ] || return 0
+        ls
+}
+
+#precmd () {
+#	# reprompt or something.
+#	[ -n "$_private_cmd" ] || return 0
+#
+#	local endt=$EPOCHREALTIME
+#	local cmd=$_private_cmd
+#	_private_cmd=
+#	local dt=$((endt - _private_stt))
+#
+#	local display_threshold=2
+#	[ ${dt%.*} -ge $display_threshold ] || return 0
+#
+#	local frac=${(r:3::0:)${dt#*.}}
+#	dt=${dt%.*}
+#	local sec=$((dt%60))
+#	local str=$(printf "%d.%ss" $sec $frac)
+#	dt=$((dt/60))
+#	if [ $dt -gt 0 ]; then
+#		local min=$((dt%60))
+#		str=$(printf "%dm %s" $min $str)
+#		dt=$((dt/60))
+#		if [ $dt -gt 0 ]; then
+#			local hour=$dt
+#			str=$(printf "%dh %s" $hour $str)
+#		fi
+#	fi
+#	printf "%s: %s\n" $cmd $str
+#}
+
+# From bash functions
+grep () {
+	# 0=stdin, 1=stdout, 2=stderr
+	if [[ -t 1 ]]; then
+		command grep -n --color=auto "$@"
+	else
+		command grep "$@"
+	fi
+}
+
+cds () {
+	if [ -z "$1" ]; then
+		return;
+	fi;
+	local upto=$1;
+	cd "${PWD/\/$upto\/*//$upto}"
+}
+
+jd () {
+	if [ -z "$1" ]; then
+		echo "Usage: jd [directory]"
+		return 1
+	fi
+	#cd **/"$1"
+	possibilities=(**/$1)
+	count=0
+	dir=
+	for d in "${possibilities[@]}"; do 
+		if [ -d d ]; then
+			if [ $count -eq 0 ]; then
+				dir=$d
+				count=1
+			else
+				echo "$1 is ambiguous."
+				return 2
+			fi
+		fi
+	done
+	case $count in
+		0) echo "No '$1' found in tree"; return 3;;
+		1) cd "$dir"; return $?;;
+		*) echo "!!?!!?"
+	esac
+}
+
