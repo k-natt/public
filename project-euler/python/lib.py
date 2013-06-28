@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 
+
+def fibonacci_generator(a, b):
+	yield a
+	yield b
+	while True:
+		a, b = b, a+b
+		yield b
+
+
 def factors(n):
 	f = 2
 	while n > f:
@@ -32,7 +41,7 @@ def genprimes():
 		gen = exclude(p, gen)
 
 
-def divany(n, lst):
+def divisible_by_any(n, lst):
 	for i in lst:
 		if n % i == 0:
 			return True

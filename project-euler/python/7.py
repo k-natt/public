@@ -1,16 +1,22 @@
 #!/usr/bin/env python
 
-from lib import divany
+from lib import divisible_by_any
 
-n = 10001
-primes = [2]
-n -= 1
-x = 3
-while n > 0:
-	if not divany(x, primes):
-		primes.append(x)
-		n -= 1
-	x += 2
+# 10,001st prime number
 
-print primes[-1]
+def nth_prime(N):
+	primes = [2]
+	N -= 1
+	x = 3
+	while N > 0:
+		if not divisible_by_any(x, primes):
+			primes.append(x)
+			N -= 1
+		x += 2
+	return primes[-1]
+
+
+if __name__ == '__main__':
+	N = 10001
+	print "Answer: " + str(nth_prime(N))
 

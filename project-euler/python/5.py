@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 
-from lib import factors
+from lib         import factors
 from collections import Counter as mset
-from operator import mul
+from operator    import mul
 
-facts = mset()
-for i in range(1, 21):
-	facts += mset(factors(i)) - facts
+# "smallest positive number that is evenly divisible by all of the numbers from 1 to 20"
 
-print reduce(mul, facts.elements(), 1)
+def smallest_divisible(min_, max_):
+	facts = mset()
+	for i in range(min_, max_+1):
+		facts += mset(factors(i)) - facts
+
+	return reduce(mul, facts.elements(), 1)
+
+if __name__ == '__main__':
+	print "Answer: " + str(smallest_divisible(1, 20))
 

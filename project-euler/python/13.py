@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-ns = """
+# First 10 digits of the sum of 100 50-digit numbers
+
+numbers = """
 37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
 74324986199524741059474233309513058123726617309629
@@ -103,5 +105,9 @@ ns = """
 53503534226472524250874054075591789781264330331690
 """.strip().split('\n')
 
-print str(sum(map(int, ns)))[:10]
+def method(nums):
+	return sum(map(int, nums))
+
+if __name__ == '__main__':
+	print "Answer: " + str(method(numbers))[:10]
 

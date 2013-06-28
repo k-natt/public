@@ -2,24 +2,31 @@
 
 from lib import factors
 
-i = 600851475143
-f = 2
+# Largest prime factor of 600851475143
+
 
 # 1.37 ms
-while i % f == 0:
-	i /= f
+def method_direct(N):
+	f = 2
+	while N % f == 0:
+		N /= f
 
-if i > 1:
-	f = 3
+	if N > 1:
+		f = 3
 
-while i > f:
-	if i % f == 0:
-		i /= f
-	else:
-		f += 1
-
-print "Direct: %d" % f
+	while N > f:
+		if N % f == 0:
+			N /= f
+		else:
+			f += 1
+	return f
 
 # 1.37 ms
-print "Iterator: %d" % max(factors(600851475143))
+def method_max(N):
+	return max(factors(N))
+
+if __name__ == '__main__':
+	large_number = 600851475143
+	print "Direct: " + str(method_direct(large_number))
+	print "Iterator: " + str(method_max(large_number))
 

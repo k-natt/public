@@ -2,19 +2,27 @@
 
 import itertools
 
+# Sum of the multiples of 3 and 5 below 1,000
+
 # 175 us
-s0 = 0
-for i in range(1000):
-	if i % 3 == 0 or i % 5 == 0:
-		s0 += i
+def method_direct(N):
+	total = 0
+	for i in range(N):
+		if i % 3 == 0 or i % 5 == 0:
+			total += i
+	return total
 
 # 162 us
-s1 = sum([i for i in range(1000) if i % 3 == 0 or i % 5 == 0])
+def method_comprehension(N):
+	return sum([i for i in range(N) if i % 3 == 0 or i % 5 == 0])
 
 # 273 us
-s2 = sum(itertools.ifilter(lambda x: x % 3 == 0 or x % 5 == 0, range(1000)))
+def method_filter(N):
+	return sum(itertools.ifilter(lambda x: x % 3 == 0 or x % 5 == 0, range(1000)))
 
-print "Direct: %d" % s0
-print "Comprehension: %d" % s1
-print "Itertools: %d" % s2
+if __name__ == '__main__':
+	N = 1000
+	print "Direct: "        + str(method_direct(N))
+	print "Comprehension: " + str(method_comprehension(N))
+	print "Itertools: "     + str(method_filter(N))
 
