@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DF6198E7-EB0E-43DC-93CF-03EE28AC2811</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FontList</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FAC4AF3C-2968-4606-A5B2-D186B3AEDE80</key>
+		<string>ssh://github.com/k-natt/public.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FontList/FontList.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FAC4AF3C-2968-4606-A5B2-D186B3AEDE80</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/k-natt/public.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FAC4AF3C-2968-4606-A5B2-D186B3AEDE80</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FAC4AF3C-2968-4606-A5B2-D186B3AEDE80</string>
+			<key>IDESourceControlWCCName</key>
+			<string>public</string>
+		</dict>
+	</array>
+</dict>
+</plist>
