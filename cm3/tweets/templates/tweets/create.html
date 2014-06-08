@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Tweet{% endblock %}
+
+{% block content %}
+	<form action="{% url 'create_tweet' %}" method="POST" id="tweetform">
+		{% csrf_token %}
+		<table>
+			{% if errors.rebranded %}
+			<tr>
+				<td>Your text was rebranded. Please check it over. Original:</td>
+				<td>
+					{{ errors.rebranded }}
+				</td>
+			</tr>
+			{% endif %}
+			<tr>
+				<td>Text</td>
+				<td>
+					<textarea name="text" id="tweet" rows="4" cols="35">{% if 'text' in old_info %}{{ old_info.text }}{% endif %}</textarea>
+				</td>
+				{% if errors %}
+				<td class="error">
+					{% if 'text' in errors %}
+					{{ errors.text }}
+					{% endif %}
+				</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<td>Characters:</td>
+				<td id="charcount"></td>
+			<tr>
+				<td colspan="2">
+					<input type="submit" id="submitTweet"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

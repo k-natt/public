@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ total }} tweet{{ total|pluralize }}{% endblock %}
+
+{% block content %}
+{% if post_result %}
+<div id="{{ post_result }}">{{ post_message }}</div>
+{% endif %}
+{% if perms.tweets.edit %}
+<form action="{{ request.path }}" method="POST">
+{% endif %}
+<table id="tweets">
+	<tr class="header">
+		<th>Author</th>
+		<th>Created</th>
+		<th>Sent</th>
+		<th>Content</th>
+		<th class="approve">Approved</th>
+	</tr>
+	{% for tweet in pending %}
+	<tr class="pending {% cycle 'odd' 'even' %}">
+		<td>{{ tweet.author.username }}</td>
+		<td title="{{ tweet.created|date:"r" }}">
+			{{ tweet.created|date:"N jS" }}
+		</td>
+		{% if tweet.sent %}
+		<td title="{{ tweet.sent|date:"r" }}">
+			{{ tweet.sent|date:"N jS" }}
+		</td>
+		{% else %}
+		<td></td>
+		{% endif %}
+		<td title="{{ tweet.text }}">{{ tweet.text|truncatechars:25 }}</td>
+		{% if perms.tweets.edit %}
+		<td class="checkbox">
+			<input type="checkbox" name="tweet_{{ tweet.id }}" />
+		</td>
+		{% else %}
+		<td></td>
+		{% endif %}
+	</tr>
+	{% empty %}
+	<tr class="nopending"><td colspan="5" class="nopending">No pending tweets</td></tr>
+	{% endfor %}
+	<tr class="separator">
+		<td colspan="4"></td>
+		{% if perms.tweets.edit %}
+		<!--<td><input type="submit" text="Approve checked" /></td>-->
+		<td class="approve"><button name="approve" value="approve" type="submit">
+				Approve checked
+		</button></td>
+		{% endif %}
+	</tr>
+	{% for tweet in approved %}
+	<tr class="approved {% cycle 'odd' 'even' %}">
+		<td>{{ tweet.author.username }}</td>
+		<td title="{{ tweet.created|date:"r" }}">
+			{{ tweet.created|date:"N jS" }}</td>
+		{% if tweet.sent %}
+		<td title="{{ tweet.sent|date:"r" }}">
+			{{ tweet.sent|date:"N jS" }}
+		</td>
+		{% else %}
+		<td></td>
+		{% endif %}
+		<td title="{{ tweet.text }}">{{ tweet.text|truncatechars:25 }}</td>
+		<td title="{{ tweet.approved|date:"r" }}" class="approve">
+			{{ tweet.approved|date:"N jS" }}</td>
+	</tr>
+	{% empty %}
+	<tr class="noapproved"><td colspan="5" class="noapproved">No approved tweets</td></tr>
+	{% endfor %}
+</table>
+{% if perms.tweets.edit %}
+</form>
+{% endif %}
+{% endblock %}

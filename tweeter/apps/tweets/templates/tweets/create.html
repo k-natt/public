@@ -1,0 +1,15 @@
+{% extends 'tweets/skel.html' %}
+
+{% block title %}Create tweet{% endblock %}
+{% block content %}
+<form action="{{ request.path }}" method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	{% comment %}
+	<input name="text" type="textarea" />
+	<span id="charcount">140</span>
+	{% endcomment %}
+	<input name="submit" type="submit" />
+</form>
+{% endblock %}
+

@@ -1,0 +1,63 @@
+
+body {
+	background:#acf;
+}
+div#body {
+	width:750px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+div#sidebar {
+	float:left;
+	display:block;
+	padding:10px;
+	width:150px;
+	margin:0px;
+}
+div#content {
+	float:right;
+	display:block;
+	padding:10px;
+	width:555px;
+	margin:0px;
+}
+ul.nav {
+	list-style-type:none;
+}
+ul.nav li {
+	margin:5px 0px 5px 0px;
+}
+ul.nav li a:link, ul.nav li a:visited {
+	color:#000;
+}
+ul.nav li a:hover {
+	color:#c00;
+}
+table.list {
+	width:100%;
+	border-collapse:collapse;
+}
+table.list th, table.list td {
+	margin:0px;
+	padding:5px;
+}
+table.list th {
+	text-align:left;
+}
+tr.tweet:hover {
+	background:#006;
+	color:white;
+}
+tr.odd {
+	background:#9ac;
+}
+table.list a:link, table.list a:visited {
+	color:black;
+}
+.red {
+	color:red;
+}
+.green {
+	color:green;
+}

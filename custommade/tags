@@ -1,0 +1,103 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADMINS	custommade/settings.py	/^ADMINS = ($/;"	v
+ALLOWED_HOSTS	custommade/settings.py	/^ALLOWED_HOSTS = []$/;"	v
+DATABASES	custommade/settings.py	/^DATABASES = {$/;"	v
+DEBUG	custommade/settings.py	/^DEBUG = True$/;"	v
+DjangoUser	registration/models.py	/^from django.contrib.auth.models import User as DjangoUser$/;"	i
+HttpResponse	registration/views.py	/^from django.http import HttpResponseRedirect, HttpResponse$/;"	i
+HttpResponseRedirect	registration/views.py	/^from django.http import HttpResponseRedirect, HttpResponse$/;"	i
+INSTALLED_APPS	custommade/settings.py	/^INSTALLED_APPS = ($/;"	v
+LANGUAGE_CODE	custommade/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LOGGING	custommade/settings.py	/^LOGGING = {$/;"	v
+List	tweets/views.py	/^class List(LoginRequired):$/;"	c
+Login	registration/urls.py	/^from registration.views import Login, Logout, Register, login_status$/;"	i
+Login	registration/views.py	/^class Login(View):$/;"	c
+LoginRequired	registration/views.py	/^class LoginRequired(View):$/;"	c
+LoginRequired	tweets/views.py	/^from registration.views import LoginRequired$/;"	i
+Logout	registration/urls.py	/^from registration.views import Login, Logout, Register, login_status$/;"	i
+Logout	registration/views.py	/^class Logout(View):$/;"	c
+MANAGERS	custommade/settings.py	/^MANAGERS = ADMINS$/;"	v
+MEDIA_ROOT	custommade/settings.py	/^MEDIA_ROOT = ''$/;"	v
+MEDIA_URL	custommade/settings.py	/^MEDIA_URL = ''$/;"	v
+MIDDLEWARE_CLASSES	custommade/settings.py	/^MIDDLEWARE_CLASSES = ($/;"	v
+ROOT_URLCONF	custommade/settings.py	/^ROOT_URLCONF = 'custommade.urls'$/;"	v
+Register	registration/urls.py	/^from registration.views import Login, Logout, Register, login_status$/;"	i
+Register	registration/views.py	/^class Register(View):$/;"	c
+RequestContext	tweets/views.py	/^from django.template import RequestContext$/;"	i
+SECRET_KEY	custommade/settings.py	/^SECRET_KEY = 'yh6u#mzg(uuon80r4r86aqmpc_4hmrpf89cqy069z@dv+p@hm$'$/;"	v
+SITE_ID	custommade/settings.py	/^SITE_ID = 1$/;"	v
+STATICFILES_DIRS	custommade/settings.py	/^STATICFILES_DIRS = ($/;"	v
+STATICFILES_FINDERS	custommade/settings.py	/^STATICFILES_FINDERS = ($/;"	v
+STATIC_ROOT	custommade/settings.py	/^STATIC_ROOT = ''$/;"	v
+STATIC_URL	custommade/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+SimpleTest	core/tests.py	/^class SimpleTest(TestCase):$/;"	c
+SimpleTest	registration/tests.py	/^class SimpleTest(TestCase):$/;"	c
+SimpleTest	tweets/tests.py	/^class SimpleTest(TestCase):$/;"	c
+TEMPLATE_DEBUG	custommade/settings.py	/^TEMPLATE_DEBUG = DEBUG$/;"	v
+TEMPLATE_DIRS	custommade/settings.py	/^TEMPLATE_DIRS = ($/;"	v
+TEMPLATE_LOADERS	custommade/settings.py	/^TEMPLATE_LOADERS = ($/;"	v
+TIME_ZONE	custommade/settings.py	/^TIME_ZONE = 'America\/New_York'$/;"	v
+TestCase	core/tests.py	/^from django.test import TestCase$/;"	i
+TestCase	registration/tests.py	/^from django.test import TestCase$/;"	i
+TestCase	tweets/tests.py	/^from django.test import TestCase$/;"	i
+Tweet	tweets/admin.py	/^from tweets.models import Tweet$/;"	i
+Tweet	tweets/models.py	/^class Tweet(models.Model):$/;"	c
+Tweet	tweets/views.py	/^from tweets.models import Tweet$/;"	i
+TweetList	custommade/urls.py	/^from tweets.views import List as TweetList$/;"	i
+USE_I18N	custommade/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	custommade/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	custommade/settings.py	/^USE_TZ = True$/;"	v
+User	registration/views.py	/^from django.contrib.auth.models import User$/;"	i
+User	tweets/models.py	/^from django.contrib.auth.models import User$/;"	i
+View	registration/views.py	/^from django.views.generic.base import View$/;"	i
+WSGI_APPLICATION	custommade/settings.py	/^WSGI_APPLICATION = 'custommade.wsgi.application'$/;"	v
+__unicode__	tweets/models.py	/^	def __unicode__(self):$/;"	m	class:Tweet	file:
+admin	custommade/urls.py	/^from django.contrib import admin$/;"	i
+admin	tweets/admin.py	/^from django.contrib import admin$/;"	i
+admin	tweets/models.py	/^from django.contrib import admin$/;"	i
+application	custommade/wsgi.py	/^application = get_wsgi_application()$/;"	v
+approved	tweets/models.py	/^	approved = models.DateTimeField(null = True)$/;"	v	class:Tweet
+authenticate	registration/views.py	/^from django.contrib.auth import authenticate, login, logout$/;"	i
+author	tweets/models.py	/^	author = models.ForeignKey(User)$/;"	v	class:Tweet
+content	tweets/views.py	/^	def content(self, request):$/;"	m	class:List
+created	tweets/models.py	/^	created = models.DateTimeField(auto_now_add = True)$/;"	v	class:Tweet
+execute_from_command_line	manage.py	/^    from django.core.management import execute_from_command_line$/;"	i
+get	registration/views.py	/^	def get(self, request, *args, **kwargs):$/;"	m	class:Login
+get	registration/views.py	/^	def get(self, request, *args, **kwargs):$/;"	m	class:LoginRequired
+get	registration/views.py	/^	def get(self, request, *args, **kwargs):$/;"	m	class:Logout
+get_wsgi_application	custommade/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+groupby	tweets/views.py	/^from itertools import groupby$/;"	i
+home	registration/views.py	/^def home():$/;"	f
+include	custommade/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+login	registration/views.py	/^from django.contrib.auth import authenticate, login, logout$/;"	i
+login_status	registration/urls.py	/^from registration.views import Login, Logout, Register, login_status$/;"	i
+login_status	registration/views.py	/^def login_status(request):$/;"	f
+login_template	registration/views.py	/^login_template = 'registration\/login.html'$/;"	v
+logout	registration/views.py	/^from django.contrib.auth import authenticate, login, logout$/;"	i
+models	core/models.py	/^from django.db import models$/;"	i
+models	registration/models.py	/^from django.db import models$/;"	i
+models	tweets/models.py	/^from django.db import models$/;"	i
+os	custommade/wsgi.py	/^import os$/;"	i
+os	manage.py	/^import os$/;"	i
+patterns	custommade/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+patterns	registration/urls.py	/^from django.conf.urls import patterns, url$/;"	i
+post	registration/views.py	/^	def post(self, request, *args, **kwargs):$/;"	m	class:Login
+redirect_url	registration/views.py	/^	redirect_url = reverse_lazy('login')$/;"	v	class:LoginRequired
+render	registration/views.py	/^from django.shortcuts import render$/;"	i
+render_to_response	tweets/views.py	/^from django.shortcuts import render_to_response$/;"	i
+reverse_lazy	registration/views.py	/^from django.core.urlresolvers import reverse_lazy$/;"	i
+sent	tweets/models.py	/^	sent = models.DateTimeField(null = True)$/;"	v	class:Tweet
+sys	manage.py	/^import sys$/;"	i
+test_basic_addition	core/tests.py	/^    def test_basic_addition(self):$/;"	m	class:SimpleTest
+test_basic_addition	registration/tests.py	/^    def test_basic_addition(self):$/;"	m	class:SimpleTest
+test_basic_addition	tweets/tests.py	/^    def test_basic_addition(self):$/;"	m	class:SimpleTest
+text	tweets/models.py	/^	text = models.TextField(140)$/;"	v	class:Tweet
+url	custommade/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+url	registration/urls.py	/^from django.conf.urls import patterns, url$/;"	i
+urlpatterns	custommade/urls.py	/^urlpatterns = patterns('',$/;"	v
+urlpatterns	registration/urls.py	/^urlpatterns = patterns('',$/;"	v

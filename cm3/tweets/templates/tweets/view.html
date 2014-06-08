@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load custom_tags %}
+
+{% block title %}Tweet number {{ tweet.id }}{% endblock %}
+
+{% block content %}
+<p>Composed: {% shortdate tweet.created %}</p>
+<p>Text: {{ tweet.text }}</p>
+<p>Authorized: {% shortdate tweet.approved %}</p>
+<p>Authorized by: {% firstof tweet.approver 'Automatic' %}</p>
+{% endblock %}

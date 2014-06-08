@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="{% static 'style.css' %}" />
+		<script type="text/javascript" src="{% static 'script.js' %}"></script>
+		<title>{% block title %}Title{% endblock %}</title>
+	</head>
+	<body>
+		<div id="body">
+			<div id="sidebar">
+				{% block sidebar %}
+				{% if user.is_authenticated %}
+				<p>Logged in as {{ user.username }}</p>
+				{% endif %}
+				<ul class="nav">
+					<li><a href="{% url 'home' %}">Home</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'create_tweet' %}">Compose</a></li>
+					{% if perms.tweets.approve_tweets %}
+					<li><a href="{% url 'pending_tweets' %}">Pending</a></li>
+					{% endif %}
+					<li><a href="{% url 'approved_tweets' %}">Approved</a></li>
+					<li><a href="{% url 'logout' %}">Log out</a></li>
+					{% else %}
+					<li><a href="{% url 'login' %}">Log in</a></li>
+					{% endif %}
+				</ul>
+				{% endblock %}
+			</div>
+			<div id="content">
+				{% block content %}
+				<h1>Hello</h1>
+				{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

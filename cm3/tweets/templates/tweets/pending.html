@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block title %}Pending{% endblock %}
+
+{% block content %}
+<form action="" method="POST">
+	{% csrf_token %}
+<table class="list">
+	<tr>
+		<th>Author</th>
+		<th>Created</th>
+		<th>Text</th>
+		<th></th>
+	</tr>
+	{% for tweet in tweets %}
+	<tr class="tweet {% cycle 'odd' 'even' %}">
+		<td>{{ tweet.author.username }}</td>
+		<td>{% shortdate tweet.created %}</td>
+		<td>{% shorttext tweet.text 25 %}</td>
+		<td><button type="submit" name="approve" value="{{ tweet.id }}">Approve</button></td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td>
+			{% if tweets.has_previous %}
+			<a href="?page={{ tweets.previous_page_number }}">&lt; Prev</a>
+			{% endif %}
+		</td>
+		<td colspan="2"></td>
+		<td>
+			{% if tweets.has_next %}
+			<a href="?page={{ tweets.next_page_number }}">Next &gt;</a>
+			{% endif %}
+		</td>
+	</tr>
+</table>
+</form>
+{% endblock %}
+

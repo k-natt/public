@@ -523,6 +523,7 @@
 				0A30E4D51824069F00A7DC8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A30E4D61824069F00A7DC8F /* Build configuration list for PBXNativeTarget "FontListTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +532,7 @@
 				0A30E4D81824069F00A7DC8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

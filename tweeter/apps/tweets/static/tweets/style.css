@@ -1,0 +1,15 @@
+body {
+	background: green;
+}
+#sidebar {
+	background:red;
+	width:  200px;
+	height: 100%;
+	float:left;
+	display:block;
+}
+#content {
+	background:blue;
+	display:block;
+	float:left;
+}

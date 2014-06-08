@@ -1,0 +1,15 @@
+{% extends 'skel.html' %}
+
+{% block title %}{{ tweet_list|length }} tweets{% endblock %}
+
+{% block content %}
+{% if tweet_list %}
+	<ul>
+	{% for tweet in tweet_list %}
+		<li><a href="{% url 'view_tweet' tweet.id %}">{{ tweet }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<h3>No polls</h3>
+{% endif %}
+{% endblock %}
